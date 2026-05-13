@@ -345,10 +345,140 @@
             border-bottom: 2px solid #8dc63f;
         }
 
+        /* Steps list */
+        .steps-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .steps-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 14px;
+            color: #334155;
+        }
+
+        .steps-list li:last-child { border-bottom: none; }
+
+        .step-num {
+            background: #003d6b;
+            color: white;
+            font-weight: 700;
+            font-size: 12px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .step-num.green { background: #8dc63f; }
+        .step-num.orange { background: #f59e0b; }
+
+        /* Disposition mockup */
+        .disposition-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .disposition-panel {
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .disposition-panel-header {
+            background: #f3f4f6;
+            border-bottom: 1px solid #d1d5db;
+            padding: 10px 14px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #374151;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .disposition-panel-body { padding: 14px; }
+
+        .disposition-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 10px;
+            border-radius: 4px;
+            font-size: 13px;
+            color: #374151;
+            margin-bottom: 4px;
+        }
+
+        .disposition-option:hover { background: #f9fafb; }
+        .disposition-option.selected { background: #eff6ff; color: #1d4ed8; font-weight: 600; }
+        .disposition-option .dot { width: 8px; height: 8px; border-radius: 50%; background: #d1d5db; flex-shrink: 0; }
+        .disposition-option.selected .dot { background: #2563eb; }
+
+        /* Routing scenario cards */
+        .scenario-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .scenario-header {
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .scenario-header.blue { background: linear-gradient(135deg, #1e40af, #2563eb); }
+        .scenario-header.green { background: linear-gradient(135deg, #166534, #16a34a); }
+        .scenario-header.orange { background: linear-gradient(135deg, #92400e, #d97706); }
+
+        .scenario-badge {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 3px 8px;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+
+        .scenario-badge.blue { background: rgba(255,255,255,0.2); color: white; }
+        .scenario-badge.green { background: rgba(255,255,255,0.2); color: white; }
+        .scenario-badge.orange { background: rgba(255,255,255,0.2); color: white; }
+
+        .scenario-title { color: white; font-size: 15px; font-weight: 600; }
+        .scenario-subtitle { color: rgba(255,255,255,0.75); font-size: 12px; margin-top: 2px; }
+
+        .scenario-body { padding: 20px; }
+
+        .scenario-note {
+            padding: 10px 14px;
+            border-radius: 4px;
+            font-size: 13px;
+            margin-bottom: 16px;
+        }
+
+        .scenario-note.blue { background: #eff6ff; border-left: 3px solid #2563eb; color: #1e40af; }
+        .scenario-note.green { background: #f0fdf4; border-left: 3px solid #16a34a; color: #166534; }
+        .scenario-note.orange { background: #fffbeb; border-left: 3px solid #d97706; color: #92400e; }
+
         @media (max-width: 768px) {
             .container { padding: 20px; }
             .notification-grid { grid-template-columns: 1fr; }
             .task-fields { grid-template-columns: 1fr; }
+            .disposition-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -581,6 +711,264 @@
                 Review the contact record and form submission details. Reach out within 1 business day. Task disposition and close-out process to be confirmed.
             </div>
 
+        </div>
+    </div>
+
+    <!-- Closing Out a Task -->
+    <p class="section-title">How to Close Out a Task</p>
+    <p style="font-size: 14px; color: #475569; margin-bottom: 20px;">Once you've taken action on a lead, you must update and close the task in Salesforce within 1 business day. Here's how:</p>
+
+    <ol class="steps-list">
+        <li>
+            <span class="step-num">1</span>
+            <div><strong>Open the task</strong> from your dashboard, email notification, or in-app alert.</div>
+        </li>
+        <li>
+            <span class="step-num">2</span>
+            <div><strong>Click Edit</strong> on the task record.</div>
+        </li>
+        <li>
+            <span class="step-num">3</span>
+            <div><strong>Update the Comments field</strong> with a description of the action you took — e.g. "Left voicemail, will follow up Friday" or "Sent intro email."</div>
+        </li>
+        <li>
+            <span class="step-num">4</span>
+            <div><strong>Choose a Disposition</strong> that reflects the outcome of your outreach.</div>
+        </li>
+        <li>
+            <span class="step-num">5</span>
+            <div><strong>Change the Status to Completed</strong> and save.</div>
+        </li>
+    </ol>
+
+    <div class="disposition-grid">
+        <div class="disposition-panel">
+            <div class="disposition-panel-header">Disposition Options</div>
+            <div class="disposition-panel-body">
+                <div class="disposition-option"><span class="dot"></span> VM</div>
+                <div class="disposition-option"><span class="dot"></span> NVM</div>
+                <div class="disposition-option"><span class="dot"></span> Meeting Booked</div>
+                <div class="disposition-option"><span class="dot"></span> Next Step</div>
+                <div class="disposition-option"><span class="dot"></span> No Interest</div>
+                <div class="disposition-option"><span class="dot"></span> Bad Number</div>
+            </div>
+        </div>
+        <div class="disposition-panel">
+            <div class="disposition-panel-header">Status Options</div>
+            <div class="disposition-panel-body">
+                <div class="disposition-option"><span class="dot"></span> Open</div>
+                <div class="disposition-option selected"><span class="dot"></span> Completed ← set this when done</div>
+            </div>
+            <div style="padding: 0 14px 14px; font-size: 12px; color: #6b7280; font-style: italic;">
+                Always set Status to Completed — do not just close the browser tab.
+            </div>
+        </div>
+    </div>
+
+    <!-- Lead Routing Scenarios -->
+    <p class="section-title">Lead Routing Scenarios</p>
+    <p style="font-size: 14px; color: #475569; margin-bottom: 20px;">Not all leads arrive the same way. Here's what to do depending on the type of lead you receive.</p>
+
+    <!-- Scenario 1 -->
+    <div class="scenario-card">
+        <div class="scenario-header blue">
+            <div>
+                <div style="display:flex; align-items:center; gap:10px;">
+                    <span class="scenario-badge blue">Scenario 1</span>
+                    <span class="scenario-title">Net-New Lead on an Existing Account</span>
+                </div>
+                <div class="scenario-subtitle">A new contact matched to a Master Account you already own</div>
+            </div>
+        </div>
+        <div class="scenario-body">
+            <div class="scenario-note blue">This lead has never been in Salesforce before, but their email domain matched one of your accounts. They've been assigned to you as the account owner.</div>
+            <ol class="steps-list">
+                <li><span class="step-num green">1</span><div>Open the task notification</div></li>
+                <li><span class="step-num green">2</span>
+                    <div>
+                        Review the lead details — scroll down to the <strong>Marketing Information</strong> and <strong>Marketing Attribution</strong> sections on the lead record to understand their engagement history.
+                        <div style="margin-top: 12px; border: 1px solid #d1d5db; border-radius: 6px; overflow: hidden; font-size: 12px;">
+                            <div style="background: #f3f4f6; border-bottom: 1px solid #d1d5db; padding: 8px 14px; font-weight: 700; color: #374151; text-transform: uppercase; letter-spacing: 0.4px;">Marketing Information</div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; background: white;">
+                                <div style="padding: 8px 14px; border-bottom: 1px solid #f3f4f6; border-right: 1px solid #f3f4f6;">
+                                    <div style="color: #6b7280; font-size: 11px; margin-bottom: 2px;">MQL</div>
+                                    <div style="color: #111827; font-weight: 600;">✓</div>
+                                </div>
+                                <div style="padding: 8px 14px; border-bottom: 1px solid #f3f4f6;">
+                                    <div style="color: #6b7280; font-size: 11px; margin-bottom: 2px;">HubSpot Combined Lead Score</div>
+                                    <div style="color: #111827; font-weight: 600;">150</div>
+                                </div>
+                                <div style="padding: 8px 14px; border-bottom: 1px solid #f3f4f6; border-right: 1px solid #f3f4f6;">
+                                    <div style="color: #6b7280; font-size: 11px; margin-bottom: 2px;">MQL Date</div>
+                                    <div style="color: #111827; font-weight: 600;">5/8/2026, 12:23 PM</div>
+                                </div>
+                                <div style="padding: 8px 14px; border-bottom: 1px solid #f3f4f6;">
+                                    <div style="color: #6b7280; font-size: 11px; margin-bottom: 2px;">HubSpot Engagement Score</div>
+                                    <div style="color: #111827; font-weight: 600;">100</div>
+                                </div>
+                                <div style="padding: 8px 14px; border-bottom: 1px solid #f3f4f6; border-right: 1px solid #f3f4f6;">
+                                    <div style="color: #6b7280; font-size: 11px; margin-bottom: 2px;">Number of Pageviews</div>
+                                    <div style="color: #111827; font-weight: 600;">31</div>
+                                </div>
+                                <div style="padding: 8px 14px; border-bottom: 1px solid #f3f4f6;">
+                                    <div style="color: #6b7280; font-size: 11px; margin-bottom: 2px;">HubSpot Fit Score</div>
+                                    <div style="color: #111827; font-weight: 600;">50</div>
+                                </div>
+                                <div style="padding: 8px 14px; border-right: 1px solid #f3f4f6;">
+                                    <div style="color: #6b7280; font-size: 11px; margin-bottom: 2px;">Last Page Seen</div>
+                                    <div style="color: #2563eb; font-weight: 500; word-break: break-all;">geneseesci.com/product/genclone-pes-vacuum-filtration-systems/</div>
+                                </div>
+                                <div style="padding: 8px 14px;">
+                                    <div style="color: #6b7280; font-size: 11px; margin-bottom: 2px;">Number of Sessions</div>
+                                    <div style="color: #111827; font-weight: 600;">7</div>
+                                </div>
+                            </div>
+                            <div style="background: #f3f4f6; border-top: 1px solid #d1d5db; border-bottom: 1px solid #d1d5db; padding: 8px 14px; font-weight: 700; color: #374151; text-transform: uppercase; letter-spacing: 0.4px;">Marketing Attribution</div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; background: white;">
+                                <div style="padding: 8px 14px; border-bottom: 1px solid #f3f4f6; border-right: 1px solid #f3f4f6;">
+                                    <div style="color: #6b7280; font-size: 11px; margin-bottom: 2px;">First Conversion</div>
+                                    <div style="color: #111827; font-weight: 600;">Request Account (Form)</div>
+                                </div>
+                                <div style="padding: 8px 14px; border-bottom: 1px solid #f3f4f6;">
+                                    <div style="color: #6b7280; font-size: 11px; margin-bottom: 2px;">First Conversion Date</div>
+                                    <div style="color: #111827; font-weight: 600;">5/8/2026, 12:21 PM</div>
+                                </div>
+                                <div style="padding: 8px 14px; border-right: 1px solid #f3f4f6;">
+                                    <div style="color: #6b7280; font-size: 11px; margin-bottom: 2px;">Recent Conversion</div>
+                                    <div style="color: #111827; font-weight: 600;">Request Account (Form)</div>
+                                </div>
+                                <div style="padding: 8px 14px;">
+                                    <div style="color: #6b7280; font-size: 11px; margin-bottom: 2px;">Recent Conversion Date</div>
+                                    <div style="color: #111827; font-weight: 600;">5/8/2026, 12:21 PM</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-top: 8px; font-size: 12px; color: #6b7280; font-style: italic;">These fields tell you what pages they visited, what form they submitted, how engaged they are, and how they first found Genesee Scientific.</div>
+                    </div>
+                </li>
+                <li><span class="step-num green">3</span><div>Confirm it's truly net-new (not just unmatched)</div></li>
+                <li><span class="step-num green">4</span><div>Review: company name, location, email domain, form submitted</div></li>
+                <li><span class="step-num green">5</span><div>Qualify the lead</div></li>
+                <li><span class="step-num green">6</span><div>Log outreach activity</div></li>
+                <li><span class="step-num green">7</span><div>Update lead status</div></li>
+                <li><span class="step-num green">8</span><div>Complete the task</div></li>
+                <li><span class="step-num green">9</span><div>Convert the lead to a Contact on the appropriate Lab Level account — or create a new Lab Level account if one doesn't exist</div></li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Scenario 2 -->
+    <div class="scenario-card">
+        <div class="scenario-header green">
+            <div>
+                <div style="display:flex; align-items:center; gap:10px;">
+                    <span class="scenario-badge green">Scenario 2</span>
+                    <span class="scenario-title">Engagement on an Existing Contact</span>
+                </div>
+                <div class="scenario-subtitle">A contact already in Salesforce has re-engaged through marketing</div>
+            </div>
+        </div>
+        <div class="scenario-body">
+            <div class="scenario-note green">This person is already in your account. The task is a signal that they've re-engaged — review the relationship before reaching out.</div>
+            <ol class="steps-list">
+                <li><span class="step-num green">1</span><div>Open the task notification</div></li>
+                <li><span class="step-num green">2</span>
+                    <div>
+                        Click into the lead/contact record — scroll to <strong>Marketing Information</strong> and <strong>Marketing Attribution</strong> to see what triggered the re-engagement.
+                        <div style="margin-top: 12px; border: 1px solid #d1d5db; border-radius: 6px; overflow: hidden; font-size: 12px;">
+                            <div style="background: #f3f4f6; border-bottom: 1px solid #d1d5db; padding: 8px 14px; font-weight: 700; color: #374151; text-transform: uppercase; letter-spacing: 0.4px;">Marketing Information</div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; background: white;">
+                                <div style="padding: 8px 14px; border-bottom: 1px solid #f3f4f6; border-right: 1px solid #f3f4f6;">
+                                    <div style="color: #6b7280; font-size: 11px; margin-bottom: 2px;">MQL</div>
+                                    <div style="color: #111827; font-weight: 600;">✓</div>
+                                </div>
+                                <div style="padding: 8px 14px; border-bottom: 1px solid #f3f4f6;">
+                                    <div style="color: #6b7280; font-size: 11px; margin-bottom: 2px;">HubSpot Combined Lead Score</div>
+                                    <div style="color: #111827; font-weight: 600;">150</div>
+                                </div>
+                                <div style="padding: 8px 14px; border-bottom: 1px solid #f3f4f6; border-right: 1px solid #f3f4f6;">
+                                    <div style="color: #6b7280; font-size: 11px; margin-bottom: 2px;">MQL Date</div>
+                                    <div style="color: #111827; font-weight: 600;">5/8/2026, 12:23 PM</div>
+                                </div>
+                                <div style="padding: 8px 14px; border-bottom: 1px solid #f3f4f6;">
+                                    <div style="color: #6b7280; font-size: 11px; margin-bottom: 2px;">HubSpot Engagement Score</div>
+                                    <div style="color: #111827; font-weight: 600;">100</div>
+                                </div>
+                                <div style="padding: 8px 14px; border-bottom: 1px solid #f3f4f6; border-right: 1px solid #f3f4f6;">
+                                    <div style="color: #6b7280; font-size: 11px; margin-bottom: 2px;">Number of Pageviews</div>
+                                    <div style="color: #111827; font-weight: 600;">31</div>
+                                </div>
+                                <div style="padding: 8px 14px; border-bottom: 1px solid #f3f4f6;">
+                                    <div style="color: #6b7280; font-size: 11px; margin-bottom: 2px;">HubSpot Fit Score</div>
+                                    <div style="color: #111827; font-weight: 600;">50</div>
+                                </div>
+                                <div style="padding: 8px 14px; border-right: 1px solid #f3f4f6;">
+                                    <div style="color: #6b7280; font-size: 11px; margin-bottom: 2px;">Last Page Seen</div>
+                                    <div style="color: #2563eb; font-weight: 500; word-break: break-all;">geneseesci.com/product/genclone-pes-vacuum-filtration-systems/</div>
+                                </div>
+                                <div style="padding: 8px 14px;">
+                                    <div style="color: #6b7280; font-size: 11px; margin-bottom: 2px;">Number of Sessions</div>
+                                    <div style="color: #111827; font-weight: 600;">7</div>
+                                </div>
+                            </div>
+                            <div style="background: #f3f4f6; border-top: 1px solid #d1d5db; border-bottom: 1px solid #d1d5db; padding: 8px 14px; font-weight: 700; color: #374151; text-transform: uppercase; letter-spacing: 0.4px;">Marketing Attribution</div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; background: white;">
+                                <div style="padding: 8px 14px; border-bottom: 1px solid #f3f4f6; border-right: 1px solid #f3f4f6;">
+                                    <div style="color: #6b7280; font-size: 11px; margin-bottom: 2px;">First Conversion</div>
+                                    <div style="color: #111827; font-weight: 600;">Request Account (Form)</div>
+                                </div>
+                                <div style="padding: 8px 14px; border-bottom: 1px solid #f3f4f6;">
+                                    <div style="color: #6b7280; font-size: 11px; margin-bottom: 2px;">First Conversion Date</div>
+                                    <div style="color: #111827; font-weight: 600;">5/8/2026, 12:21 PM</div>
+                                </div>
+                                <div style="padding: 8px 14px; border-right: 1px solid #f3f4f6;">
+                                    <div style="color: #6b7280; font-size: 11px; margin-bottom: 2px;">Recent Conversion</div>
+                                    <div style="color: #111827; font-weight: 600;">Request Account (Form)</div>
+                                </div>
+                                <div style="padding: 8px 14px;">
+                                    <div style="color: #6b7280; font-size: 11px; margin-bottom: 2px;">Recent Conversion Date</div>
+                                    <div style="color: #111827; font-weight: 600;">5/8/2026, 12:21 PM</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-top: 8px; font-size: 12px; color: #6b7280; font-style: italic;">Use this to understand what re-engaged them — which page they visited, what form they submitted, and how their score has changed.</div>
+                    </div>
+                </li>
+                <li><span class="step-num green">3</span><div>Click into the related account record</div></li>
+                <li><span class="step-num green">4</span><div>Check account history, open opportunities, recent orders, and prior activity</div></li>
+                <li><span class="step-num green">5</span><div>Follow up directly, or coordinate with your CDR if needed</div></li>
+                <li><span class="step-num green">6</span><div>Log your outreach activity in Salesforce</div></li>
+                <li><span class="step-num green">7</span><div>Update the lead status or add notes</div></li>
+                <li><span class="step-num green">8</span><div>Mark the task complete</div></li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Scenario 3 -->
+    <div class="scenario-card">
+        <div class="scenario-header orange">
+            <div>
+                <div style="display:flex; align-items:center; gap:10px;">
+                    <span class="scenario-badge orange">Scenario 3</span>
+                    <span class="scenario-title">Net-New Lead — No Existing Account</span>
+                </div>
+                <div class="scenario-subtitle">Domain didn't match any Master Account — handled by Amber or Brittney</div>
+            </div>
+        </div>
+        <div class="scenario-body">
+            <div class="scenario-note orange">These leads land under Marketing Master (MARKETING) because their domain isn't tied to an existing account. Amber and Brittney handle triage and routing for these.</div>
+            <ol class="steps-list">
+                <li><span class="step-num orange">1</span><div>Open the task or notification</div></li>
+                <li><span class="step-num orange">2</span><div>Review lead details</div></li>
+                <li><span class="step-num orange">3</span><div>Check: company name, email domain, location, and form activity</div></li>
+                <li><span class="step-num orange">4</span><div>Confirm whether it's truly net-new or just unmatched to an existing account</div></li>
+                <li><span class="step-num orange">5</span><div>Qualify the lead</div></li>
+                <li><span class="step-num orange">6</span><div>Determine next step</div></li>
+                <li><span class="step-num orange">7</span><div>Route or escalate to the correct AM if needed</div></li>
+                <li><span class="step-num orange">8</span><div>Log outreach in Salesforce</div></li>
+                <li><span class="step-num orange">9</span><div>Update lead status</div></li>
+                <li><span class="step-num orange">10</span><div>Mark task complete</div></li>
+            </ol>
         </div>
     </div>
 
