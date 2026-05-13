@@ -462,6 +462,34 @@
         .scenario-subtitle { color: rgba(255,255,255,0.75); font-size: 12px; margin-top: 2px; }
 
         .scenario-body { padding: 20px; }
+        .scenario-body.collapsed { display: none; }
+
+        .scenario-toggle {
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 5px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            transition: background 0.2s;
+        }
+
+        .scenario-toggle:hover { background: rgba(255,255,255,0.25); }
+
+        .scenario-toggle-arrow {
+            font-size: 10px;
+            transition: transform 0.25s ease;
+            display: inline-block;
+        }
+
+        .scenario-toggle-arrow.open { transform: rotate(180deg); }
 
         .scenario-note {
             padding: 10px 14px;
@@ -771,16 +799,20 @@
 
     <!-- Scenario 1 -->
     <div class="scenario-card">
-        <div class="scenario-header blue">
-            <div>
+        <div class="scenario-header blue" onclick="toggleScenario('s1')" style="cursor:pointer;">
+            <div style="flex:1;">
                 <div style="display:flex; align-items:center; gap:10px;">
                     <span class="scenario-badge blue">Scenario 1</span>
                     <span class="scenario-title">Net-New Lead on an Existing Account</span>
                 </div>
                 <div class="scenario-subtitle">A new contact matched to a Master Account you already own</div>
             </div>
+            <button class="scenario-toggle" onclick="toggleScenario('s1'); event.stopPropagation();">
+                <span id="s1-label">Show Steps</span>
+                <span class="scenario-toggle-arrow" id="s1-arrow">▼</span>
+            </button>
         </div>
-        <div class="scenario-body">
+        <div class="scenario-body collapsed" id="s1-body">
             <div class="scenario-note blue">This lead has never been in Salesforce before, but their email domain matched one of your accounts. They've been assigned to you as the account owner.</div>
             <ol class="steps-list">
                 <li><span class="step-num green">1</span><div>Open the task notification</div></li>
@@ -859,16 +891,20 @@
 
     <!-- Scenario 2 -->
     <div class="scenario-card">
-        <div class="scenario-header green">
-            <div>
+        <div class="scenario-header green" onclick="toggleScenario('s2')" style="cursor:pointer;">
+            <div style="flex:1;">
                 <div style="display:flex; align-items:center; gap:10px;">
                     <span class="scenario-badge green">Scenario 2</span>
                     <span class="scenario-title">Engagement on an Existing Contact</span>
                 </div>
                 <div class="scenario-subtitle">A contact already in Salesforce has re-engaged through marketing</div>
             </div>
+            <button class="scenario-toggle" onclick="toggleScenario('s2'); event.stopPropagation();">
+                <span id="s2-label">Show Steps</span>
+                <span class="scenario-toggle-arrow" id="s2-arrow">▼</span>
+            </button>
         </div>
-        <div class="scenario-body">
+        <div class="scenario-body collapsed" id="s2-body">
             <div class="scenario-note green">This person is already in your account. The task is a signal that they've re-engaged — review the relationship before reaching out.</div>
             <ol class="steps-list">
                 <li><span class="step-num green">1</span><div>Open the task notification</div></li>
@@ -946,16 +982,20 @@
 
     <!-- Scenario 3 -->
     <div class="scenario-card">
-        <div class="scenario-header orange">
-            <div>
+        <div class="scenario-header orange" onclick="toggleScenario('s3')" style="cursor:pointer;">
+            <div style="flex:1;">
                 <div style="display:flex; align-items:center; gap:10px;">
                     <span class="scenario-badge orange">Scenario 3</span>
                     <span class="scenario-title">Net-New Lead — No Existing Account</span>
                 </div>
                 <div class="scenario-subtitle">Domain didn't match any Master Account — handled by Amber or Brittney</div>
             </div>
+            <button class="scenario-toggle" onclick="toggleScenario('s3'); event.stopPropagation();">
+                <span id="s3-label">Show Steps</span>
+                <span class="scenario-toggle-arrow" id="s3-arrow">▼</span>
+            </button>
         </div>
-        <div class="scenario-body">
+        <div class="scenario-body collapsed" id="s3-body">
             <div class="scenario-note orange">These leads land under Marketing Master (MARKETING) because their domain isn't tied to an existing account. Amber and Brittney handle triage and routing for these.</div>
             <ol class="steps-list">
                 <li><span class="step-num orange">1</span><div>Open the task or notification</div></li>
@@ -1015,6 +1055,19 @@
     </div>
 
 </div>
+
+<script>
+    function toggleScenario(id) {
+        const body = document.getElementById(id + '-body');
+        const arrow = document.getElementById(id + '-arrow');
+        const label = document.getElementById(id + '-label');
+        const isCollapsed = body.classList.contains('collapsed');
+
+        body.classList.toggle('collapsed');
+        arrow.classList.toggle('open', isCollapsed);
+        label.textContent = isCollapsed ? 'Hide Steps' : 'Show Steps';
+    }
+</script>
 
 </body>
 </html>
