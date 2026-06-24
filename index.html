@@ -533,12 +533,87 @@
         </div>
     </div>
 
-    <p class="section-title">The Three Lead Paths</p>
+    <p class="section-title">The Four Lead Paths</p>
 
-    <!-- PATH 1: MQL -->
+    <!-- PATH 1: Sales Form Submission -->
     <div class="path-card">
         <div class="path-header">
             <div class="path-number">1</div>
+            <div>
+                <div class="path-title">Sales Form Submission</div>
+                <div class="path-trigger">Trigger: Contact submits Request a Quote, Sample Request, or Request an Account</div>
+            </div>
+        </div>
+        <div class="path-body">
+
+            <div class="trigger-box">
+                <strong>How it works</strong>
+                Three forms that previously routed to Customer Service now route to Sales: <strong>Request a Quote</strong>, <strong>Sample Request</strong>, and <strong>Request an Account</strong>. When one is submitted, the contact is matched to its Master Account by email domain, synced to Salesforce as a lead or contact, and a task is created for the owner of that Master Account.
+            </div>
+
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
+                <span style="background: #eff6ff; border: 1px solid #bfdbfe; color: #1e40af; font-size: 13px; font-weight: 600; padding: 6px 12px; border-radius: 4px;">Request a Quote</span>
+                <span style="background: #eff6ff; border: 1px solid #bfdbfe; color: #1e40af; font-size: 13px; font-weight: 600; padding: 6px 12px; border-radius: 4px;">Sample Request</span>
+                <span style="background: #eff6ff; border: 1px solid #bfdbfe; color: #1e40af; font-size: 13px; font-weight: 600; padding: 6px 12px; border-radius: 4px;">Request an Account</span>
+            </div>
+
+            <div class="flow">
+                <div class="flow-step">Submits sales form</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">Matched to Master Account by email domain</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">Lead / Contact synced to Salesforce</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">Task → Account Owner</div>
+            </div>
+
+            <div class="task-mockup">
+                <div class="task-mockup-header">
+                    <div class="task-icon">✓</div>
+                    <div>
+                        <div class="task-label">Task</div>
+                        <div class="task-subject">TBA <span style="font-size:12px; font-weight:500; color:#6b7280;">(unique subject per form)</span></div>
+                    </div>
+                </div>
+                <div class="task-name-related">
+                    <div><span class="field-label">Name:</span><span>David Jones</span></div>
+                </div>
+                <div class="task-fields">
+                    <div class="task-field">
+                        <span class="field-label">Assigned To</span>
+                        <span class="field-value assigned">Account Owner</span>
+                    </div>
+                    <div class="task-field">
+                        <span class="field-label">Due Date</span>
+                        <span class="field-value overdue">1 Business Day</span>
+                    </div>
+                    <div class="task-field">
+                        <span class="field-label">Priority</span>
+                        <span class="field-value priority-high">High</span>
+                    </div>
+                    <div class="task-field">
+                        <span class="field-label">Status</span>
+                        <span class="field-value">Open</span>
+                    </div>
+                </div>
+                <div class="task-comments">
+                    <span class="field-label">Comments</span>
+                    TBA — each form has its own description, but all are very similar.
+                </div>
+            </div>
+
+            <div class="tbd-box">
+                <strong style="font-style: normal; display: block; margin-bottom: 4px; color: #64748b;">Expected Action</strong>
+                Review the contact record and the form they submitted to determine fit and next steps. Reach out within 1 business day. Each of the three forms has its own task subject and description (TBA); close-out process to be confirmed.
+            </div>
+
+        </div>
+    </div>
+
+    <!-- PATH 2: MQL -->
+    <div class="path-card">
+        <div class="path-header">
+            <div class="path-number">2</div>
             <div>
                 <div class="path-title">Marketing Qualified Lead (MQL)</div>
                 <div class="path-trigger">Trigger: Contact accumulates 100+ engagement points from website activity</div>
@@ -604,10 +679,10 @@
         </div>
     </div>
 
-    <!-- PATH 2: Meeting Scheduled -->
+    <!-- PATH 3: Meeting Scheduled -->
     <div class="path-card">
         <div class="path-header">
-            <div class="path-number">2</div>
+            <div class="path-number">3</div>
             <div>
                 <div class="path-title">Meeting Scheduled</div>
                 <div class="path-trigger">Trigger: Contact books a meeting via your HubSpot scheduling link</div>
@@ -673,10 +748,10 @@
         </div>
     </div>
 
-    <!-- PATH 3: ABM LinkedIn Form -->
+    <!-- PATH 4: ABM LinkedIn Form -->
     <div class="path-card">
         <div class="path-header">
-            <div class="path-number">3</div>
+            <div class="path-number">4</div>
             <div>
                 <div class="path-title">ABM LinkedIn Form Submission</div>
                 <div class="path-trigger">Trigger: Contact submits a form after clicking a LinkedIn ad</div>
@@ -1021,6 +1096,13 @@
             <th>Assigned To</th>
             <th>Due</th>
             <th>Priority</th>
+        </tr>
+        <tr>
+            <td><strong>Sales Form Submission</strong><br><em style="font-size:12px; color:#6b7280;">Request a Quote, Sample Request, Request an Account</em></td>
+            <td>TBA <em style="font-size:12px; color:#6b7280;">(unique per form)</em></td>
+            <td>Account Owner</td>
+            <td>1 Business Day</td>
+            <td>High</td>
         </tr>
         <tr>
             <td><strong>MQL</strong></td>
